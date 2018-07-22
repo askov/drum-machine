@@ -7,11 +7,7 @@ export class DrumPad extends React.Component {
     this.handlePadClick = this.handlePadClick.bind(this);
   }
   handlePadClick() {
-    console.log('Click!', this.audioRef);
-    // this.audioRef.current.stop();
-    this.audioRef.current.pause();
-    this.audioRef.current.currentTime = 0;
-    this.audioRef.current.play();
+    this.props.play(this.audioRef.current);
   }
   render() {
     return (
@@ -22,6 +18,7 @@ export class DrumPad extends React.Component {
       >{this.props.pad.key}
         <audio
           src={this.props.pad.src}
+          data-name={this.props.pad.name}
           id={this.props.pad.key}
           preload="true"
           ref={this.audioRef}></audio>
