@@ -1,9 +1,14 @@
 import React from 'react';
+import styles from '../styles/style.scss';
+
+import { DrumMachine } from './DrumMachine';
 
 export class App extends React.Component {
   render() {
     return (
-      <div>app</div>
+      <div>
+        <DrumMachine />
+      </div>
     );
   }
 }
