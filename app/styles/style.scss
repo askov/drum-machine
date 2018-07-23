@@ -1,3 +1,30 @@
+@import './normalize';
+
+.drum-machine-body {
+  background-color: #282828;
+}
+.drum-pad-container {
+  display: flex;
+}
 .drum-pad {
-  background-color: red;
+  cursor: pointer;
+  text-align: center;
+  color: #f2f2f2;
+  background-color: #282828;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(#282828, #161616);
+  border: 5px solid #565656;
+  &:focus {
+    outline: none;
+  }
+  &--active {
+    border-color: orange;
+    color: orange;
+  }
+  // &:active {
+  //   background-color: red;
+  //   border-color: red;
+  // }
 }
