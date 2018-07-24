@@ -13,7 +13,8 @@ export class DrumPad extends React.Component {
     return (
       <div
         role="button" tabIndex="-1"
-        className={'drum-pad' + (this.props.pad.active ? ' drum-pad--active' : '')}
+        className={'drum-pad' +
+          (this.props.pad.active ? ' drum-pad--active' : '')}
         onClick={this.handlePadClick}
       > <span>{this.props.pad.key}</span>
         <audio

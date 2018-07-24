@@ -8,8 +8,14 @@ export class DrumMachine extends React.Component {
     this.playAudio = this.playAudio.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.handleKeyUp = this.handleKeyUp.bind(this);
+    this.updateDisplay = this.updateDisplay.bind(this);
+    this.handlePowerClick = this.handlePowerClick.bind(this);
+    this.activatePad = this.activatePad.bind(this);
+
+
     this.state = {
       display: 'none',
+      power: false,
       kit: [
         { key: 'Q', active: false, src: 'https://cdn.glitch.com/0966cc53-0935-45e4-9edf-7c4fa500e219%2FRX15%20CLHH.wav?1532352722339', name: 'CLHH' },
         { key: 'W', active: false, src: 'https://cdn.glitch.com/0966cc53-0935-45e4-9edf-7c4fa500e219%2FRX15%20SNR%20D1.wav?1532352722730', name: 'SNR D1' },
@@ -35,6 +41,9 @@ export class DrumMachine extends React.Component {
     audio.pause();
     audio.currentTime = 0;
     audio.play();
+    // this.activatePad(audio.id);
+
+    this.updateDisplay(audio.dataset.name);
   }
   updateDisplay(text) {
     this.setState({ display: text });
@@ -58,14 +67,13 @@ export class DrumMachine extends React.Component {
     this.deactivatePad(x);
   }
   handleKeyDown(e) {
+    if (!this.state.power) return;
     const x = this.mapKeyCode(e.keyCode);
+    if (!x) return;
     this.activatePad(x);
-    if (x) {
-      const audio = document.getElementById(x);
-      if (!audio) return;
-      audio.click();
-      this.updateDisplay(audio.dataset.name);
-    }
+    const audio = document.getElementById(x);
+    if (!audio) return;
+    audio.click();
   }
   activatePad(key) {
     this.setState({
@@ -81,12 +89,16 @@ export class DrumMachine extends React.Component {
       })
     });
   }
-
+  handlePowerClick() {
+    this.setState({ power: !this.state.power });
+  }
   render() {
     return (
       <div id="drum-machine" className="drum-machine-body">
+        <div role="button" className="power-button" onClick={this.handlePowerClick}></div>
+        <div className={'power-led' + (this.state.power ? ' power-led--on' : '')}></div>
         <Display text={this.state.display} />
-        <div className="drum-pad-container">
+        <div className={'drum-pad-container' + (this.state.power ? ' drum-pad-container--on' : '')}>
           {
             this.state.kit.map(pad =>
               <DrumPad pad={pad} key={pad.key} play={this.playAudio} />

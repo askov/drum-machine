@@ -1,30 +1,67 @@
 @import './normalize';
 
+.power-button {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  background-color: #f2f2f2;
+}
+.power-led {
+  width: 20px;
+  height: 10px;
+  // border-radius: 2px;
+  background-color: #f2f2f2;
+  box-shadow: inset 0 0 2px 2px #282828;
+  // background: radial-gradient(#282828, #161616 60%, grey);
+  // background: radial-gradient(grey, #282828);
+
+  // box-shadow: 2px 2px 1px 2px #161616;
+  &--on {
+    background-color: red;
+  }
+}
 .drum-machine-body {
+  font-family: 'Russo One', sans-serif;
   background-color: #282828;
+  display: inline-block;
 }
 .drum-pad-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 10px;
+  // background-color: red;
+  padding: 1em;
+  pointer-events: none;
+  &--on {
+    pointer-events: all;
+  }
 }
 .drum-pad {
+  user-select: none;
+  box-sizing: border-box;
   cursor: pointer;
   text-align: center;
-  color: #f2f2f2;
+  color: #bfbfbf;
   background-color: #282828;
   border-radius: 50%;
   width: 100px;
   height: 100px;
-  background: radial-gradient(#282828, #161616);
-  border: 5px solid #565656;
+  padding: 1em;
+  background: radial-gradient(#282828, #161616 60%, grey);
+  box-shadow: 3px 3px 1px 3px #161616;
   &:focus {
     outline: none;
   }
-  &--active {
-    border-color: orange;
-    color: orange;
+  text-shadow: 0 0 2px black;
+
+  &--active, &:active {
+    box-shadow: 1px 1px 1px 3px #161616, inset 0 0 10px 1px #005ef7;
+    border-color: #005ef7;
+    color: #a0c4ff;
+    text-shadow: 0 0 5px #a0c4ff;
   }
-  // &:active {
-  //   background-color: red;
-  //   border-color: red;
-  // }
+  span {
+    display: absolute;
+    top: 0;
+  }
 }
