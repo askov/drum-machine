@@ -6,7 +6,7 @@ export class Display extends React.Component {
   }
   render() {
     return (
-      <div id="display">
+      <div className={'drum-display' + (this.props.power ? ' drum-display--on' : '')} id="display">
         {this.props.text}
       </div>
     );

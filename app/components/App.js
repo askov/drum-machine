@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../styles/style.scss';
+import styles from '../assets/styles/style.scss';
 
 import { DrumMachine } from './DrumMachine';
 
