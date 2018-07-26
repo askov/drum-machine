@@ -1,10 +1,27 @@
 @import './normalize';
 @import './fonts';
 
+.button-panel {
+  display: flex;
+  // background-color: yellow;
+  padding: 1em;
 
+  div[role="button"] {
+    margin-right: 1em;
+  }
+}
+
+
+.volume-display {
+  margin-top: 1em;
+  font-family: 'DSEG14-Classic';
+  padding: 0.5em;
+  background-color: #161616;
+  color: #fb7c00;
+}
 .drum-display {
   background-color: #bcbcbc;
-
+  margin-top: 1em;
   padding: 0 0.5em;
   height: 2em;
   line-height: 2em;
@@ -14,36 +31,65 @@
   font-family: 'DSEG14-Classic';
   transition-duration: 0.5s;
   &--on {
-    background-color: #fb7c00;
+    // background-color: #fb7c00;
+    background-color: #77abff;
   }
 }
 
-.power-button {
+.round-button {
   cursor: pointer;
+  position: relative;
   transition-duration: 0.5s;
-
   width: 20px;
   height: 20px;
   box-shadow: 1px 1px 1px 2px #161616;
-  border-radius: 2px;
+  border-radius: 50%;
   padding: 5px;
+  background-image: radial-gradient(at 25% bottom, #282828, #161616 50%, grey);
+  &:after {
+    font-size: 12px;
+    color: #bfbfbf;
+    position: absolute;
+    display: block;
+    top: calc(100% + 5px);
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
   svg {
     path {
       fill: grey;
       transition-duration: 0.5s;
     }
   }
-  &--on {
-    // box-shadow: none;
-  box-shadow: 1px 1px 1px 1px #161616;
-
-    background: radial-gradient(rgba(196, 255, 130, 0.5), transparent 70%);
+  &--on, &:active {
+    box-shadow: 1px 1px 1px 1px #161616;
     svg {
       path {
         fill: #c4ff82;
 
       }
     }
+  }
+}
+
+.power-button {
+  &:after {
+    content: 'Power';
+  }
+  &.round-button--on {
+    background: radial-gradient(rgba(196, 255, 130, 0.5), transparent 70%);
+  }
+}
+
+.vol-plus {
+  &:after {
+    content: 'Vol+';
+  }
+}
+
+.vol-minus {
+  &:after {
+    content: 'Vol-';
   }
 }
 
