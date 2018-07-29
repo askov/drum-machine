@@ -13,9 +13,13 @@ export class DrumMachine extends React.Component {
     this.handlePowerClick = this.handlePowerClick.bind(this);
     this.activatePad = this.activatePad.bind(this);
 
+    this.handleVolumeUp = this.handleVolumeUp.bind(this);
+    this.handleVolumeDown = this.handleVolumeDown.bind(this);
+
 
     this.state = {
       display: '',
+      volume: 0.1,
       power: false,
       kit: [
         { key: 'Q', active: false, src: 'https://cdn.glitch.com/0966cc53-0935-45e4-9edf-7c4fa500e219%2FRX15%20CLHH.wav?1532352722339', name: 'CLHH' },
@@ -94,6 +98,11 @@ export class DrumMachine extends React.Component {
     const text = this.state.power ? '' : 'Welcome';
     this.setState({ power: !this.state.power });
     this.setState({ display: text });
+  }
+  handleVolumeUp() {
+
+  }
+  handleVolumeDown() {
 
   }
   render() {
@@ -101,9 +110,11 @@ export class DrumMachine extends React.Component {
       <div id="drum-machine" className="drum-machine-body">
         <ButtonPanel
           power={this.state.power}
+          handleVolumeUp={this.handleVolumeUp}
+          handleVolumeDown={this.handleVolumeDown}
           handlePowerClick={this.handlePowerClick} />
 
-        <div className="volume-display">test 123</div>
+        <div className="volume-display">{this.state.volume * 100}</div>
 
         <Display
           text={this.state.display}
@@ -112,6 +123,7 @@ export class DrumMachine extends React.Component {
           {
             this.state.kit.map(pad =>
               <DrumPad
+                volume={this.state.volume}
                 pad={pad}
                 key={pad.key}
                 play={this.playAudio} />
