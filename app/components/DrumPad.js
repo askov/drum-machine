@@ -7,17 +7,17 @@ export class DrumPad extends React.Component {
     this.handlePadClick = this.handlePadClick.bind(this);
   }
   componentDidMount() {
-    this.audioRef.current.volume = this.props.volume;
+    this.audioRef.current.volume = this.props.volume / 100;
   }
   handlePadClick() {
     this.props.play(this.audioRef.current);
   }
-  handleVolumeUp() {
-    this.props.handleVolumeUp(this.audioRef.current);
-  }
-  handleVolumeDown() {
-    this.props.handleVolumeDown(this.audioRef.current);
-  }
+  // handleVolumeUp() {
+  //   this.props.handleVolumeUp(this.audioRef.current);
+  // }
+  // handleVolumeDown() {
+  //   this.props.handleVolumeDown(this.audioRef.current);
+  // }
   render() {
     return (
       <div

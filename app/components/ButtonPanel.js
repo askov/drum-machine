@@ -15,12 +15,12 @@ export class ButtonPanel extends React.Component {
         </div>
         <div
           role="button"
-          className={'vol-plus round-button' + (this.props.power ? ' round-button--on' : '')}
-          onClick={this.props.handleVolumeUp}></div>
+          className={'vol-minus round-button' + (this.props.power ? ' round-button--on' : '')}
+          onMouseDown={this.props.handleVolumeDown}></div>
         <div
           role="button"
-          className={'vol-minus round-button' + (this.props.power ? ' round-button--on' : '')}
-          onClick={this.props.handleVolumeDown}></div>
+          className={'vol-plus round-button' + (this.props.power ? ' round-button--on' : '')}
+          onMouseDown={this.props.handleVolumeUp}></div>
       </div>
     );
   }

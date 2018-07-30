@@ -19,7 +19,7 @@ export class DrumMachine extends React.Component {
 
     this.state = {
       display: '',
-      volume: 0.1,
+      volume: 80,
       power: false,
       kit: [
         { key: 'Q', active: false, src: 'https://cdn.glitch.com/0966cc53-0935-45e4-9edf-7c4fa500e219%2FRX15%20CLHH.wav?1532352722339', name: 'CLHH' },
@@ -99,12 +99,30 @@ export class DrumMachine extends React.Component {
     this.setState({ power: !this.state.power });
     this.setState({ display: text });
   }
+
   handleVolumeUp() {
-
+    console.log('volume up');
+    if (this.state.volume < 100) {
+      this.setState({ volume: this.state.volume + 1 })
+    }
+    this.updateVolume();
   }
+
   handleVolumeDown() {
-
+    console.log('volume down');
+    if (this.state.volume > 0) {
+      this.setState({ volume: this.state.volume - 1 })
+    }
+    this.updateVolume();
   }
+
+  updateVolume() {
+    const audios = document.querySelectorAll('audio');
+    audios.forEach(audio => {
+      audio.volume = this.state.volume / 100;
+    });
+  }
+
   render() {
     return (
       <div id="drum-machine" className="drum-machine-body">
@@ -114,7 +132,7 @@ export class DrumMachine extends React.Component {
           handleVolumeDown={this.handleVolumeDown}
           handlePowerClick={this.handlePowerClick} />
 
-        <div className="volume-display">{this.state.volume * 100}</div>
+        <div className="volume-display">{this.state.volume}</div>
 
         <Display
           text={this.state.display}
