@@ -12,18 +12,11 @@ export class DrumPad extends React.Component {
   handlePadClick() {
     this.props.play(this.audioRef.current);
   }
-  // handleVolumeUp() {
-  //   this.props.handleVolumeUp(this.audioRef.current);
-  // }
-  // handleVolumeDown() {
-  //   this.props.handleVolumeDown(this.audioRef.current);
-  // }
   render() {
     return (
       <div
         role="button" tabIndex="-1"
-        className={'drum-pad' +
-          (this.props.pad.active ? ' drum-pad--active' : '')}
+        className={'drum-pad' + (this.props.pad.active ? ' drum-pad--active' : '')}
         onClick={this.handlePadClick}
       > <span>{this.props.pad.key}</span>
         <audio

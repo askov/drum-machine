@@ -17,7 +17,11 @@
   font-family: 'DSEG14-Classic';
   padding: 0.5em;
   background-color: #161616;
-  color: #fb7c00;
+  color: transparent;
+  transition-duration: 1s;
+  &--on {
+    color: #fb7c00;
+  }
 }
 .drum-display {
   background-color: #bcbcbc;
