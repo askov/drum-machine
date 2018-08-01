@@ -37,6 +37,10 @@ module.exports = {
         test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
         use: ['url-loader?limit=10000&mimetype=application/octet-stream'],
       },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: ['url-loader?limit=8192'],
+      },
     ]
   },
   output: {

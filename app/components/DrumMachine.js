@@ -132,7 +132,7 @@ export class DrumMachine extends React.Component {
           handleVolumeDown={this.handleVolumeDown}
           handlePowerClick={this.handlePowerClick} />
 
-        <div className={'volume-display' + (this.state.power ? ' volume-display--on' : '')}>{this.state.volume}</div>
+        <div className={'volume-display' + (this.state.power ? ' volume-display--on' : '')}>Volume: {this.state.volume} %</div>
 
         <Display
           text={this.state.display}
