@@ -181,7 +181,12 @@ body {
     border-color: #005ef7;
     color: #a0c4ff;
     text-shadow: 0 0 5px #a0c4ff;
+    outline: none;
   }
+  &:focus {
+    background-color:  red;
+  }
+
   span {
     display: absolute;
     top: 0;

@@ -30,6 +30,8 @@ export class HoldButton extends React.Component {
         onMouseDown={this.handleMouseDown}
         onMouseUp={this.handleMouseUp}
         onMouseOut={this.handleMouseOut}
+        onTouchStart={this.handleMouseDown}
+        onTouchEnd={this.handleMouseUp}
       ></div>
     );
   }
