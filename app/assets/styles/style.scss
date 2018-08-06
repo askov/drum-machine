@@ -4,59 +4,23 @@
 html {
   height: 100%;
 }
+
 body {
   height: 100%;
+  background-color: #555;
 
-}
-
-.button-panel {
-  display: flex;
-  // background-color: yellow;
-  padding: 1em;
-
-  div[role="button"] {
-    margin-right: 1em;
-  }
-}
-
-
-.volume-display {
-  margin-top: 1em;
-  font-family: 'DSEG14-Classic';
-  padding: 0.5em;
-  background-color: #161616;
-  color: transparent;
-  transition-duration: 1s;
-  &--on {
-    color: #fb7c00;
-  }
-}
-.drum-display {
-  background-color: #bcbcbc;
-  margin-top: 1em;
-  padding: 0 0.5em;
-  height: 2em;
-  line-height: 2em;
-  box-shadow: inset 0 0 2px 1px #161616;
-  color: #262626;
-  // font-family: 'DSEG7-Classic';
-  font-family: 'DSEG14-Classic';
-  transition-duration: 0.5s;
-  &--on {
-    // background-color: #fb7c00;
-    background-color: #77abff;
-  }
 }
 
 .round-button {
   cursor: pointer;
   position: relative;
   transition-duration: 0.5s;
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+  box-sizing: border-box;
   box-shadow: 1px 1px 1px 2px #161616;
   border-radius: 50%;
-  padding: 5px;
   background-image: radial-gradient(at 25% bottom, #282828, #161616 50%, grey);
   &:after {
     font-size: 12px;
@@ -84,6 +48,76 @@ body {
   }
 }
 
+.drum-machine-body {
+  font-family: 'Russo One', sans-serif;
+  background-color: #282828;
+  border-radius: 10px;
+  padding: 1em;
+  display: inline-block;
+  position: relative;
+  left: 50%;
+  margin-top: 10vh;
+  transform: translate(-50%, 0);
+  &__top {
+    color: white;
+    font-size: 1.5rem;
+    padding: 1em;
+    background-color: #262626;
+  }
+  &__bottom {
+    display: grid;
+    grid-gap: 3px;
+    grid-template-columns: 1fr 2fr;
+  }
+  &__left-pad {
+    padding: 0 1em;
+    display: flex;
+    flex-direction: column;
+    background-color: #262626;
+    padding: 1em;
+    box-shadow: inset 0 0 3px #111;
+    border-radius: 10px;
+  }
+}
+
+.volume-display {
+  font-family: 'DSEG14-Classic';
+  padding: 0.5em;
+  background-color: #161616;
+  color: transparent;
+  transition-duration: 1s;
+  &--on {
+    color: #fb7c00;
+  }
+}
+
+.drum-display {
+  background-color: #bcbcbc;
+  margin-top: 1em;
+  padding: 0 0.5em;
+  height: 2em;
+  text-align: center;
+  line-height: 2em;
+  box-shadow: inset 0 0 2px 1px #161616;
+  color: #262626;
+  font-family: 'DSEG14-Classic';
+  transition-duration: 0.5s;
+  &--on {
+    background-color: #77abff;
+  }
+}
+
+.button-panel {
+  display: flex;
+  padding: 1em 0;
+  div[role="button"] {
+    margin-right: 1em;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
 .power-button {
   &:after {
     content: 'Power';
@@ -105,55 +139,35 @@ body {
   }
 }
 
-.power-led {
-  width: 20px;
-  height: 10px;
-  background-color: #f2f2f2;
-  box-shadow: inset 0 0 2px 2px #282828;
-  &--on {
-    background-color: red;
-  }
-}
-.drum-machine-body {
-  font-family: 'Russo One', sans-serif;
-  background-color: #282828;
-  border-radius: 10px;
-  padding: 1em;
-  display: inline-block;
-  position: relative;
-  left: 50%;
-  margin-top: 10vh;
-  transform: translate(-50%, 0);
-}
 .drum-pad-container {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 10px;
-  // background-color: red;
   padding: 1em;
   pointer-events: none;
+  border-radius: 10px;
+  background-color: #262626;
+  box-shadow: inset 0 0 3px #111;
   &--on {
     pointer-events: all;
   }
 }
+
 .drum-pad {
+  position: relative;
   user-select: none;
   box-sizing: border-box;
   cursor: pointer;
   text-align: center;
-  color: #bfbfbf;
+  color: #444;
   background-color: #282828;
   border-radius: 50%;
-  width: 100px;
-  height: 100px;
-  padding: 1em;
+  padding-top: 100%;
   background: radial-gradient(#282828, #161616 60%, grey);
   box-shadow: 3px 3px 1px 3px #161616;
   &:focus {
     outline: none;
   }
-  text-shadow: 0 0 2px black;
-
   &--active, &:active {
     box-shadow: 1px 1px 1px 3px #161616, inset 0 0 10px 1px #005ef7;
     border-color: #005ef7;
@@ -161,12 +175,25 @@ body {
     text-shadow: 0 0 5px #a0c4ff;
     outline: none;
   }
-  &:focus {
-    background-color:  red;
-  }
-
   span {
-    display: absolute;
-    top: 0;
+    position: absolute;
+    text-shadow: 0 0 2px black;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.project-info {
+  font-size: 11px;
+  margin-top: auto;
+  border-radius: 4px;
+  color: #555;
+  a {
+    text-decoration: none;
+    color: #555;
+    &:hover {
+      color: orange;
+    }
   }
 }

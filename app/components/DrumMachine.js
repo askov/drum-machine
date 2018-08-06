@@ -46,8 +46,6 @@ export class DrumMachine extends React.Component {
     audio.pause();
     audio.currentTime = 0;
     audio.play();
-    // this.activatePad(audio.id);
-
     this.updateDisplay(audio.dataset.name);
   }
   updateDisplay(text) {
@@ -101,7 +99,6 @@ export class DrumMachine extends React.Component {
   }
 
   handleVolumeUp() {
-    console.log('volume up');
     if (this.state.volume < 100) {
       this.setState({ volume: this.state.volume + 1 })
     }
@@ -109,7 +106,6 @@ export class DrumMachine extends React.Component {
   }
 
   handleVolumeDown() {
-    console.log('volume down');
     if (this.state.volume > 0) {
       this.setState({ volume: this.state.volume - 1 })
     }
@@ -126,27 +122,38 @@ export class DrumMachine extends React.Component {
   render() {
     return (
       <div id="drum-machine" className="drum-machine-body">
-        <ButtonPanel
-          power={this.state.power}
-          handleVolumeUp={this.handleVolumeUp}
-          handleVolumeDown={this.handleVolumeDown}
-          handlePowerClick={this.handlePowerClick} />
-
-        <div className={'volume-display' + (this.state.power ? ' volume-display--on' : '')}>Volume: {this.state.volume} %</div>
-
-        <Display
-          text={this.state.display}
-          power={this.state.power} />
-        <div className={'drum-pad-container' + (this.state.power ? ' drum-pad-container--on' : '')}>
-          {
-            this.state.kit.map(pad =>
-              <DrumPad
-                volume={this.state.volume}
-                pad={pad}
-                key={pad.key}
-                play={this.playAudio} />
-            )
-          }
+        <div className="drum-machine-body__top">BeatPower <span style={{ float: 'right' }}>DMZ0</span></div>
+        <div className="drum-machine-body__bottom">
+          <div className="drum-machine-body__left-pad">
+            <div className={'volume-display' + (this.state.power ? ' volume-display--on' : '')}>Volume: {this.state.volume} %</div>
+            <ButtonPanel
+              power={this.state.power}
+              handleVolumeUp={this.handleVolumeUp}
+              handleVolumeDown={this.handleVolumeDown}
+              handlePowerClick={this.handlePowerClick} />
+            <Display
+              text={this.state.display}
+              power={this.state.power} />
+            <div className="project-info">
+              <p>Freecodecamp project:</p>
+              <p>
+                <a href="https://learn.freecodecamp.org/front-end-libraries/front-end-libraries-projects/build-a-drum-machine"
+                  target="_blank">Build a Drum Machine</a>
+              </p>
+              <p>made by <a href="https://codepen.io/askov/" target="_blank">Aleks Askov</a></p>
+            </div>
+          </div>
+          <div className={'drum-pad-container' + (this.state.power ? ' drum-pad-container--on' : '')}>
+            {
+              this.state.kit.map(pad =>
+                <DrumPad
+                  volume={this.state.volume}
+                  pad={pad}
+                  key={pad.key}
+                  play={this.playAudio} />
+              )
+            }
+          </div>
         </div>
       </div>
     );
