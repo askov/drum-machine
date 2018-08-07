@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export class DrumPad extends React.Component {
   constructor(props) {
@@ -30,3 +31,9 @@ export class DrumPad extends React.Component {
     );
   }
 }
+
+DrumPad.propTypes = {
+  volume: PropTypes.number.isRequired,
+  pad: PropTypes.object.isRequired,
+  play: PropTypes.func.isRequired,
+};

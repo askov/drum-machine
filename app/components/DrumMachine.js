@@ -2,6 +2,7 @@ import React from 'react';
 import { DrumPad } from './DrumPad';
 import { Display } from './Display';
 import { ButtonPanel } from './ButtonPanel';
+import { VolumeDisplay } from './VolumeDisplay';
 
 export class DrumMachine extends React.Component {
   constructor() {
@@ -15,7 +16,6 @@ export class DrumMachine extends React.Component {
 
     this.handleVolumeUp = this.handleVolumeUp.bind(this);
     this.handleVolumeDown = this.handleVolumeDown.bind(this);
-
 
     this.state = {
       display: '',
@@ -125,7 +125,9 @@ export class DrumMachine extends React.Component {
         <div className="drum-machine-body__top">BeatPower <span style={{ float: 'right' }}>DMZ0</span></div>
         <div className="drum-machine-body__bottom">
           <div className="drum-machine-body__left-pad">
-            <div className={'volume-display' + (this.state.power ? ' volume-display--on' : '')}>Volume: {this.state.volume} %</div>
+            <VolumeDisplay
+              power={this.state.power}
+              volume={this.state.volume} />
             <ButtonPanel
               power={this.state.power}
               handleVolumeUp={this.handleVolumeUp}
@@ -147,9 +149,9 @@ export class DrumMachine extends React.Component {
             {
               this.state.kit.map(pad =>
                 <DrumPad
+                  key={pad.key}
                   volume={this.state.volume}
                   pad={pad}
-                  key={pad.key}
                   play={this.playAudio} />
               )
             }

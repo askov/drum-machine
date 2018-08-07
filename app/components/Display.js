@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export class Display extends React.Component {
   constructor(props) {
@@ -12,3 +13,8 @@ export class Display extends React.Component {
     );
   }
 }
+
+Display.propTypes = {
+  text: PropTypes.string.isRequired,
+  power: PropTypes.bool.isRequired,
+};

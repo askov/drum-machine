@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export class HoldButton extends React.Component {
   constructor(props) {
@@ -36,3 +37,8 @@ export class HoldButton extends React.Component {
     );
   }
 }
+
+HoldButton.propTypes = {
+  handleHold: PropTypes.func.isRequired,
+  class: PropTypes.string.isRequired,
+};

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { HoldButton } from './HoldButton';
 
 export class ButtonPanel extends React.Component {
@@ -24,3 +25,11 @@ export class ButtonPanel extends React.Component {
     );
   }
 }
+
+
+ButtonPanel.propTypes = {
+  handlePowerClick: PropTypes.func.isRequired,
+  handleVolumeUp: PropTypes.func.isRequired,
+  handleVolumeDown: PropTypes.func.isRequired,
+  power: PropTypes.bool.isRequired,
+};
