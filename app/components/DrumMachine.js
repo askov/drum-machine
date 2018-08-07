@@ -3,6 +3,7 @@ import { DrumPad } from './DrumPad';
 import { Display } from './Display';
 import { ButtonPanel } from './ButtonPanel';
 import { VolumeDisplay } from './VolumeDisplay';
+import DeviceFooter from './DeviceFooter';
 
 export class DrumMachine extends React.Component {
   constructor() {
@@ -136,14 +137,7 @@ export class DrumMachine extends React.Component {
             <Display
               text={this.state.display}
               power={this.state.power} />
-            <div className="project-info">
-              <p>Freecodecamp project:</p>
-              <p>
-                <a href="https://learn.freecodecamp.org/front-end-libraries/front-end-libraries-projects/build-a-drum-machine"
-                  target="_blank">Build a Drum Machine</a>
-              </p>
-              <p>made by <a href="https://codepen.io/askov/" target="_blank">Aleks Askov</a></p>
-            </div>
+            <DeviceFooter />
           </div>
           <div className={'drum-pad-container' + (this.state.power ? ' drum-pad-container--on' : '')}>
             {
