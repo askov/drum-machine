@@ -1,4 +1,5 @@
 module.exports = {
   verbose: true,
-  testEnvironment: "node"
+  setupTestFrameworkScriptFile: "<rootDir>/setupTests.js",
+  testEnvironment: "node",
 };
