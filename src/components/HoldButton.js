@@ -15,7 +15,7 @@ export class HoldButton extends React.Component {
     clearInterval(this.interval);
   }
   handleMouseDown() {
-    this.interval = setInterval(this.props.handleHold, 80)
+    this.interval = setInterval(this.props.handleHold, 50)
   }
   handleMouseUp() {
     clearInterval(this.interval);
