@@ -10,7 +10,9 @@ export class ButtonPanel extends React.Component {
   render() {
     return (
       <div className="button-panel">
-        <PowerButton buttonClass={'power-button round-button' + (this.props.power ? ' round-button--on' : '')} />
+        <PowerButton
+          buttonClass={'power-button round-button' + (this.props.power ? ' round-button--on' : '')}
+          handlePowerClick={this.props.handlePowerClick} />
         <HoldButton
           handleHold={this.props.handleVolumeDown}
           class={'vol-minus round-button' + (this.props.power ? ' round-button--on' : '')} />

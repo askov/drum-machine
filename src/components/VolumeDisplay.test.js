@@ -7,7 +7,7 @@ describe('<VolumeDisplay />', () => {
   const power = false;
   it('display renders text', () => {
     const wrapper = shallow(<VolumeDisplay power={power} volume={volume} />);
-    expect(wrapper.find('.volume-display').text()).toEqual('Volume: 80 %');
+    expect(wrapper.find('.volume-display').text()).toEqual('Vol: 80 %');
   });
   it('display off', () => {
     const wrapper = shallow(<VolumeDisplay power={power} volume={volume} />);
